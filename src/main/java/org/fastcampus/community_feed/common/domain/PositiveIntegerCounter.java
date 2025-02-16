@@ -14,4 +14,8 @@ public class PositiveIntegerCounter {
         }
         count--;
     }
+
+    public int getCount() {
+        return count;
+    }
 }

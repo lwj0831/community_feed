@@ -12,6 +12,9 @@ public class User {
     private final PositiveIntegerCounter followerCounter;
 
     public User(Long id, UserInfo info) {
+        if(info==null){
+            throw new IllegalStateException();
+        }
         this.id = id;
         this.info = info;
         this.followingCounter = new PositiveIntegerCounter();
@@ -20,7 +23,7 @@ public class User {
 
     public void follow(User targetUser){
         if(targetUser.equals(this)){
-            throw new IllegalStateException();
+            throw new IllegalArgumentException();
         }
         followingCounter.increase();
         targetUser.increaseFollowerCounter();
@@ -28,7 +31,7 @@ public class User {
 
     public void unfollow(User targetUser){
         if(targetUser.equals(this)){
-            throw new IllegalStateException();
+            throw new IllegalArgumentException();
         }
         followingCounter.decrease();
         targetUser.decreaseFollowerCounter();
@@ -52,5 +55,21 @@ public class User {
     @Override
     public int hashCode() {
         return Objects.hash(id);
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public int getFollowingCount(){
+        return followingCounter.getCount();
+    }
+
+    public int getFollowerCount(){
+        return followerCounter.getCount();
+    }
+
+    public UserInfo getInfo() {
+        return info;
     }
 }
