@@ -19,7 +19,7 @@ public class User {
 
     public User(Long id, UserInfo info) {
         if(info==null){
-            throw new IllegalStateException();
+            throw new IllegalArgumentException();
         }
         this.id = id;
         this.info = info;

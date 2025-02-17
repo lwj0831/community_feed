@@ -18,14 +18,13 @@ class UserInfoTest {
     }
 
     @Test
-    void givenBlankNameAndProfileImage_whenCreated_thenThrowNothing(){
+    void givenBlankNameAndProfileImage_whenCreated_thenThrowException(){
         //given
         String name ="";
         String profileImageUrl="";
         //when
-        UserInfo userInfo = new UserInfo(name,profileImageUrl);
         //then
-        assertThrows(IllegalStateException.class,()->new UserInfo(name, profileImageUrl));
+        assertThrows(IllegalArgumentException.class,()->new UserInfo(name, profileImageUrl));
     }
 
 

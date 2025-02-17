@@ -40,7 +40,7 @@ public class Post {
 
     public void like(User user){
         if(user.equals(author)){
-            throw new IllegalStateException();
+            throw new IllegalArgumentException();
         }
         likeCounter.increase();
     }
@@ -51,7 +51,7 @@ public class Post {
 
     public void updateContent(User user,String updateContent){
         if(!user.equals(author)){
-            throw new IllegalStateException();
+            throw new IllegalArgumentException();
         }
         content.updateContent(updateContent);
         this.state=state;

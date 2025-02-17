@@ -1,7 +1,5 @@
 package org.fastcampus.community_feed.post.domain.content;
 
-import org.fastcampus.community_feed.post.domain.content.Content;
-
 public class PostContent extends Content {
 
     private static final int POST_MIN_LENGTH = 5;
@@ -13,13 +11,13 @@ public class PostContent extends Content {
     @Override
     protected void checkText(String contentText) {
         if(contentText==null || contentText.isEmpty()){
-            throw new IllegalStateException();
+            throw new IllegalArgumentException();
         }
         if(contentText.length()<POST_MIN_LENGTH){
-            throw new IllegalStateException();
+            throw new IllegalArgumentException();
         }
         if(contentText.length()>POST_MAX_LENGTH){
-            throw new IllegalStateException();
+            throw new IllegalArgumentException();
         }
 
     }

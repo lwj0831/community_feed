@@ -51,7 +51,7 @@ class CommentServiceTest extends PostServiceTestTemplate {
         Comment comment = commentService.createComment(dto);
 
         // when
-        LikeRequestDto likeRequestDto = new LikeRequestDto(otherUser.getId(), comment.getId());
+        LikeRequestDto likeRequestDto = new LikeRequestDto(comment.getId(),otherUser.getId());
         commentService.likeComment(likeRequestDto);
 
         // then
@@ -64,7 +64,7 @@ class CommentServiceTest extends PostServiceTestTemplate {
         Comment comment = commentService.createComment(dto);
 
         // when
-        LikeRequestDto likeRequestDto = new LikeRequestDto(otherUser.getId(), comment.getId());
+        LikeRequestDto likeRequestDto = new LikeRequestDto(comment.getId(),otherUser.getId());
         commentService.likeComment(likeRequestDto);
         commentService.unlikeComment(likeRequestDto);
 
@@ -78,7 +78,7 @@ class CommentServiceTest extends PostServiceTestTemplate {
         Comment comment = commentService.createComment(dto);
 
         // when, then
-        LikeRequestDto likeRequestDto = new LikeRequestDto(user.getId(), comment.getId());
+        LikeRequestDto likeRequestDto = new LikeRequestDto(comment.getId(),user.getId());
         assertThrows(IllegalArgumentException.class, () -> commentService.likeComment(likeRequestDto));
     }
 }

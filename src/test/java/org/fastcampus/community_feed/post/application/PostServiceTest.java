@@ -44,7 +44,7 @@ class PostServiceTest extends PostServiceTestTemplate {
         Post savedPost = postService.createPost(dto);
 
         // when
-        LikeRequestDto likeRequestDto = new LikeRequestDto(otherUser.getId(), savedPost.getId());
+        LikeRequestDto likeRequestDto = new LikeRequestDto(savedPost.getId(),otherUser.getId());
         postService.likePost(likeRequestDto);
 
         // then
@@ -57,7 +57,7 @@ class PostServiceTest extends PostServiceTestTemplate {
         Post savedPost = postService.createPost(dto);
 
         // when
-        LikeRequestDto likeRequestDto = new LikeRequestDto(otherUser.getId(), savedPost.getId());
+        LikeRequestDto likeRequestDto = new LikeRequestDto(savedPost.getId(),otherUser.getId());
         postService.likePost(likeRequestDto);
         postService.likePost(likeRequestDto);
 
@@ -71,7 +71,7 @@ class PostServiceTest extends PostServiceTestTemplate {
         Post savedPost = postService.createPost(dto);
 
         // when
-        LikeRequestDto likeRequestDto = new LikeRequestDto(otherUser.getId(), savedPost.getId());
+        LikeRequestDto likeRequestDto = new LikeRequestDto(savedPost.getId(),otherUser.getId());
         postService.likePost(likeRequestDto);
         postService.unlikePost(likeRequestDto);
 
@@ -85,7 +85,7 @@ class PostServiceTest extends PostServiceTestTemplate {
         Post savedPost = postService.createPost(dto);
 
         // when
-        LikeRequestDto likeRequestDto = new LikeRequestDto(otherUser.getId(), savedPost.getId());
+        LikeRequestDto likeRequestDto = new LikeRequestDto(savedPost.getId(),otherUser.getId());
         postService.likePost(likeRequestDto);
         postService.unlikePost(likeRequestDto);
         postService.unlikePost(likeRequestDto);

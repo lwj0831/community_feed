@@ -62,7 +62,7 @@ class CommentTest {
         comment.updateContent(user, newContent);
 
         // then
-        assertEquals(newContent, comment.getContent());
+        assertEquals(newContent, comment.getContentText());
     }
 
     @Test

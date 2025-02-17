@@ -13,7 +13,7 @@ public abstract class Content {
     }
 
     public void updateContent(String updateContent){
-        checkText(contentText);
+        checkText(updateContent);
         this.contentText=updateContent;
         datetimeInfo.updateEditDateTime();
     }

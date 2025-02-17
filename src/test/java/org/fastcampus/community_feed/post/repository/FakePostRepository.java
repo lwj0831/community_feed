@@ -1,4 +1,4 @@
-package org.fastcampus.community_feed.post.domain.repository;
+package org.fastcampus.community_feed.post.repository;
 
 import org.fastcampus.community_feed.post.application.interfaces.PostRepository;
 import org.fastcampus.community_feed.post.domain.Post;

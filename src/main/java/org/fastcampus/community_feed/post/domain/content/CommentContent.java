@@ -11,10 +11,10 @@ public class CommentContent extends Content {
     @Override
     protected void checkText(String contentText) {
         if(contentText==null || contentText.isEmpty()){
-            throw new IllegalStateException();
+            throw new IllegalArgumentException();
         }
         if(contentText.length()>MAX_COMMENT_LENGTH){
-            throw new IllegalStateException();
+            throw new IllegalArgumentException();
         }
 
     }

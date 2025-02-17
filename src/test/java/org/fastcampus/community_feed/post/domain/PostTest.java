@@ -60,7 +60,7 @@ class PostTest {
         post.updateContent(user, newPostContent);
 
         // then
-        assertEquals(newPostContent, post.getContent());
+        assertEquals(newPostContent, post.getContentText());
     }
 
     @Test
