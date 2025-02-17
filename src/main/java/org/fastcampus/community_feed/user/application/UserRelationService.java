@@ -3,7 +3,9 @@ package org.fastcampus.community_feed.user.application;
 import org.fastcampus.community_feed.user.application.dto.FollowUserRequestDto;
 import org.fastcampus.community_feed.user.application.interfaces.UserRelationRepository;
 import org.fastcampus.community_feed.user.domain.User;
+import org.springframework.stereotype.Service;
 
+@Service
 public class UserRelationService {
     private final UserService userService;
     private final UserRelationRepository userRelationRepository;

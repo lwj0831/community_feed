@@ -1,6 +1,7 @@
 package org.fastcampus.community_feed.user.application;
 
 import org.fastcampus.community_feed.user.application.dto.CreateUserRequestDto;
+import org.fastcampus.community_feed.user.application.dto.GetUserResponseDto;
 import org.fastcampus.community_feed.user.application.interfaces.UserRepository;
 import org.fastcampus.community_feed.user.domain.User;
 import org.fastcampus.community_feed.user.domain.UserInfo;
@@ -22,6 +23,11 @@ public class UserService {
     }
 
     public User getUser(Long userId){
-        return userRepository.findById(userId).orElseThrow(IllegalStateException::new);
+        return userRepository.findById(userId);
+    }
+
+    public GetUserResponseDto getUserProfile(Long id){
+        User user = userRepository.findById(id);
+        return new GetUserResponseDto(user);
     }
 }

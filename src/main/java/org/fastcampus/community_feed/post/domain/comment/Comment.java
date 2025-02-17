@@ -1,11 +1,13 @@
 package org.fastcampus.community_feed.post.domain.comment;
 
+import lombok.Builder;
 import org.fastcampus.community_feed.common.domain.PositiveIntegerCounter;
 import org.fastcampus.community_feed.post.domain.Post;
 import org.fastcampus.community_feed.post.domain.content.CommentContent;
 import org.fastcampus.community_feed.post.domain.content.Content;
 import org.fastcampus.community_feed.user.domain.User;
 
+@Builder
 public class Comment {
 
     private final Long id;

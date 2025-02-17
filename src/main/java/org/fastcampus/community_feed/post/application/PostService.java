@@ -8,7 +8,9 @@ import org.fastcampus.community_feed.post.application.interfaces.PostRepository;
 import org.fastcampus.community_feed.post.domain.Post;
 import org.fastcampus.community_feed.user.application.UserService;
 import org.fastcampus.community_feed.user.domain.User;
+import org.springframework.stereotype.Service;
 
+@Service
 public class PostService {
 
     private final UserService userService;
@@ -22,13 +24,13 @@ public class PostService {
     }
 
     public Post getPost(Long id){
-        return postRepository.findById(id).orElseThrow(IllegalArgumentException::new);
+        return postRepository.findById(id);
     }
 
     public Post createPost(CreatePostRequestDto dto) {
         User author = userService.getUser(dto.userId());
         Post post = new Post(null, author, dto.content());
-        return postRepository.save(post);
+        return postRepository.save(post); //Jpa를 사용한 PostRepositoryImpl에서 PostEntity가 저장됨
     }
 
     public Post updatePost(UpdatePostRequestDto dto) {
@@ -48,7 +50,7 @@ public class PostService {
             return;
         }
 
-        post.like(user);
+        post.like(user);    //만약 PostEntity로 안나누고 Post를 Entity로 쓸경우 여기서 dirtychecking 적용 가능
         likeRepository.like(post, user);
     }
 

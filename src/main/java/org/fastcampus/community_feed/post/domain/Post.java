@@ -1,10 +1,13 @@
 package org.fastcampus.community_feed.post.domain;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import org.fastcampus.community_feed.common.domain.PositiveIntegerCounter;
-import org.fastcampus.community_feed.post.domain.content.Content;
 import org.fastcampus.community_feed.post.domain.content.PostContent;
 import org.fastcampus.community_feed.user.domain.User;
 
+@Builder
+@AllArgsConstructor
 public class Post {
     private final Long id;
     private final User author;
@@ -12,7 +15,7 @@ public class Post {
     private final PositiveIntegerCounter likeCounter;
     private PostPublicationState state;
 
-    public Post(Long id, User author, PostContent content, PostPublicationState state, PositiveIntegerCounter positiveIntegerCounter) {
+    public Post(Long id, User author, PostContent content, PostPublicationState state, PositiveIntegerCounter likeCounter) {
         if (author == null) {
             throw new IllegalArgumentException("author should not be null");
         }
@@ -24,7 +27,7 @@ public class Post {
         this.author = author;
         this.content = content;
         this.state = state;
-        this.likeCounter = positiveIntegerCounter;
+        this.likeCounter = likeCounter;
     }
 
     public Post(Long id, User author, PostContent content) {
@@ -76,5 +79,9 @@ public class Post {
 
     public PostPublicationState getState() {
         return state;
+    }
+
+    public String getContentText(){
+        return content.getContentText();
     }
 }

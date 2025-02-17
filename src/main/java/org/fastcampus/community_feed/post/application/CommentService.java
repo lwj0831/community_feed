@@ -9,6 +9,9 @@ import org.fastcampus.community_feed.post.domain.Post;
 import org.fastcampus.community_feed.post.domain.comment.Comment;
 import org.fastcampus.community_feed.user.application.UserService;
 import org.fastcampus.community_feed.user.domain.User;
+import org.springframework.stereotype.Service;
+
+@Service
 
 public class CommentService {
     private final UserService userService;
@@ -24,7 +27,7 @@ public class CommentService {
     }
 
     public Comment getComment(Long id) {
-        return commentRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Comment not found"));
+        return commentRepository.findById(id);
     }
 
     public Comment createComment(CreateCommentRequestDto dto) {
