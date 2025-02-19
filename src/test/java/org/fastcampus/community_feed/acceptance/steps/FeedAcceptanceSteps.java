@@ -22,15 +22,29 @@ public class FeedAcceptanceSteps {
                 .getObject("value", Long.class);  //응답 json의 필드명 "value":~의 해당 값 갖고옴
     }
 
-    public static List<GetPostContentResponseDto> requestFeedList(Long requestUserId) {
+    public static List<GetPostContentResponseDto> requestFeedList(String token) {
         return RestAssured
                 .given().log().all()
                 .accept(MediaType.APPLICATION_JSON_VALUE)
                 .when()
-                .get("/feed/{userId}", requestUserId)  //lastContentId필요없나?
+                .header("Authorization", "Bearer " + token) //여기서 Header로 AOP활용해 UserInfo user받음
+                .get("/feed")
                 .then().log().all()
                 .extract()
                 .jsonPath()
-                .getList("value", GetPostContentResponseDto.class); //응답 json의 필드명 "value":~의 해당 값 갖고옴
+                .getList("value", GetPostContentResponseDto.class);
+    }
+
+    public static Integer requestFeedCode(String token) {
+        return RestAssured
+                .given().log().all()
+                .accept(MediaType.APPLICATION_JSON_VALUE)
+                .when()
+                .header("Authorization", "Bearer " + token)
+                .get("/feed")
+                .then().log().all()
+                .extract()
+                .jsonPath()
+                .get("code");
     }
 }

@@ -27,11 +27,11 @@ public class CommentRepositoryImpl implements CommentRepository {
     public Comment save(Comment comment) {
         CommentEntity commentEntity = new CommentEntity(comment);
         Post targetPost = comment.getPost();
-        if(comment.getId()!=null){
+        if(comment.getId()!=null){ //merge방지위해 직접 만든 update쿼리 사용
             jpaCommentRepository.updateCommentEntity(commentEntity);
             return commentEntity.toComment();
         }
-        commentEntity = jpaCommentRepository.save(commentEntity);
+        commentEntity = jpaCommentRepository.save(commentEntity); //Id없는 DB에 아직 처음 저장되는 CommentEntity의 경우 persist일어나므로 save써도 무방(select문 2번안나감)
         jpaPostRepository.increaseCommentCounter(targetPost.getId()); //targetPost의 Comment수 1증가
         return commentEntity.toComment();
     }

@@ -1,0 +1,2 @@
+package org.fastcampus.community_feed.admin.repository;public class UserStatsQueryRepsitory {
+}

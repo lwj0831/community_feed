@@ -1,0 +1,2 @@
+package org.fastcampus.community_feed.common.principal;public class AuthPrincipal {
+}

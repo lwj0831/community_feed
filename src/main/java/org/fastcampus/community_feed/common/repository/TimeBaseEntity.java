@@ -10,7 +10,7 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import java.time.LocalDateTime;
 
-@EntityListeners(AuditingEntityListener.class)
+@EntityListeners(AuditingEntityListener.class) //@EnableJpaAuditing 애플리케이션 클래스에 필요
 @MappedSuperclass
 @Getter
 public class TimeBaseEntity {

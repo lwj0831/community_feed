@@ -26,13 +26,13 @@ public class DatabaseCleanup implements InitializingBean {
     private Set<String> generatedIdTable;
 
     @Override
-    public void afterPropertiesSet() {
+    public void afterPropertiesSet() {  //Bean 초기화 후 실행됨
         tableNames = entityManager.getMetamodel().getEntities().stream()
                 .filter(entity -> entity.getJavaType().getAnnotation(Entity.class) != null)
                 .map(entity -> entity.getJavaType().getAnnotation(Table.class).name())
                 .collect(Collectors.toList());
 
-        generatedIdTable = new HashSet<>(List.of("community_like", "community_user_relation")); //얘들은 Id값 1부터 생성되게 조정안해도 됨
+        generatedIdTable = new HashSet<>(List.of("community_user_auth","community_like", "community_user_relation")); //얘들은 Id값 1부터 생성되게 조정안해도 됨
     }
 
     @Transactional

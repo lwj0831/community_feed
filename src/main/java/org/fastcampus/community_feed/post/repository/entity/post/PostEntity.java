@@ -30,7 +30,7 @@ public class PostEntity extends TimeBaseEntity {
 
     @Convert(converter = PostPublicationStateConverter.class) //복잡한 객체가 아닌 Enum정도는 @Enumerated사용해도 무방
     private PostPublicationState state;
-    private Integer likeCount;
+    private Integer likeCount;  //매번 select로 안찾고 필드로 넣어주네
 
     @ColumnDefault("0")
     private int commentCount;

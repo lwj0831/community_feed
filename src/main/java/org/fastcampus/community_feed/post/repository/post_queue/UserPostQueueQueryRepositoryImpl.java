@@ -17,6 +17,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class UserPostQueueQueryRepositoryImpl implements UserPostQueueQueryRepository {
 
+
     private final JPAQueryFactory queryFactory;
     private static final QUserPostQueueEntity userPostQueueEntity = QUserPostQueueEntity.userPostQueueEntity;
     private static final QPostEntity postEntity = QPostEntity.postEntity;
@@ -59,7 +60,7 @@ public class UserPostQueueQueryRepositoryImpl implements UserPostQueueQueryRepos
             return null;
         }
 
-        return postEntity.id.lt(lastId);
+        return postEntity.id.lt(lastId); //내림차순이로 post들고오므로 lessthan사용
     }
 
     private BooleanExpression hasLike(Long userId) {
@@ -72,5 +73,6 @@ public class UserPostQueueQueryRepositoryImpl implements UserPostQueueQueryRepos
                 .and(likeEntity.id.targetType.eq("POST"))
                 .and(likeEntity.id.userId.eq(userId));
     }
+
 
 }
