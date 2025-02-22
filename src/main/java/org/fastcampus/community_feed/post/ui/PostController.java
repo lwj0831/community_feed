@@ -1,6 +1,7 @@
 package org.fastcampus.community_feed.post.ui;
 
 import lombok.RequiredArgsConstructor;
+import org.fastcampus.community_feed.common.idempotency.Idempotent;
 import org.fastcampus.community_feed.common.ui.Response;
 import org.fastcampus.community_feed.post.application.PostService;
 import org.fastcampus.community_feed.post.application.dto.CreatePostRequestDto;
@@ -27,7 +28,7 @@ public class PostController {
         Post post = postService.updatePost(dto);
         return Response.ok(post.getId());
     }
-
+    @Idempotent
     @PostMapping("/like")
     public Response<Void> likePost(@RequestBody LikeRequestDto dto) {
         postService.likePost(dto);

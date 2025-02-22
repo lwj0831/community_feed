@@ -1,0 +1,16 @@
+package org.fastcampus.community_feed.common.idempotency.repository;
+
+import org.fastcampus.community_feed.common.idempotency.Idempotency;
+import org.fastcampus.community_feed.common.idempotency.IdempotencyRepository;
+
+public class IdempotencyRepositoryImpl implements IdempotencyRepository {
+    @Override
+    public Idempotency getByKey(String key) {
+        return null;
+    }
+
+    @Override
+    public void save(Idempotency idempotency) {
+
+    }
+}

@@ -32,7 +32,7 @@ public class DatabaseCleanup implements InitializingBean {
                 .map(entity -> entity.getJavaType().getAnnotation(Table.class).name())
                 .collect(Collectors.toList());
 
-        generatedIdTable = new HashSet<>(List.of("community_user_auth","community_like", "community_user_relation")); //얘들은 Id값 1부터 생성되게 조정안해도 됨
+        generatedIdTable = new HashSet<>(List.of("community_user_auth","community_like", "community_user_relation","community_fcm_token")); //얘들은 Id값 1부터 생성되게 조정안해도 됨
     }
 
     @Transactional

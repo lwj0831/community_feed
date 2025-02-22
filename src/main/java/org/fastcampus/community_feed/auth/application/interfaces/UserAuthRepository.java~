@@ -7,5 +7,5 @@ public interface UserAuthRepository {
     void registerUser(UserAuth userAuth, User user);
     UserAuth findByEmail(String email);
 
-    UserAuth loginUser(String email,String password,String fcmToken);
+    UserAuth loginUser(String email,String password);
 }

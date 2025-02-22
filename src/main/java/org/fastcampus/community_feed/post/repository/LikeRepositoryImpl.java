@@ -4,6 +4,7 @@ import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
+import org.fastcampus.community_feed.admin.message.application.interfaces.MessageRepository;
 import org.fastcampus.community_feed.post.application.interfaces.LikeRepository;
 import org.fastcampus.community_feed.post.domain.Post;
 import org.fastcampus.community_feed.post.domain.comment.Comment;
@@ -21,6 +22,7 @@ public class LikeRepositoryImpl implements LikeRepository {
     private final JpaPostRepository jpaPostRepository;
     private final JpaCommentRepository jpaCommentRepository;
     private final JpaLikeRepository jpaLikeRepository;
+    private final MessageRepository messageRepository;
 
     @PersistenceContext
     private final EntityManager entityManager;
@@ -44,6 +46,7 @@ public class LikeRepositoryImpl implements LikeRepository {
         /*jpaLikeRepository.save(entity);*/
         jpaPostRepository.updateLikeCount(post.getId(),1); //동시성 문제 체크
         /*jpaPostRepository.save(new PostEntity(post)); //targetPost의 Like 1증가*/
+        messageRepository.sendLikeMessage(user,post.getAuthor());
     }
 
     @Override

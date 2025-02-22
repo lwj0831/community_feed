@@ -40,6 +40,8 @@ dependencies {
 	annotationProcessor ("jakarta.annotation:jakarta.annotation-api")
 	annotationProcessor ("jakarta.persistence:jakarta.persistence-api")
 
+	// firebase
+	implementation("com.google.firebase:firebase-admin:9.3.0")
 
 	// jwt
 	implementation("io.jsonwebtoken:jjwt-api:0.12.6")

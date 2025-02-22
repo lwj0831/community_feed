@@ -1,0 +1,7 @@
+package org.fastcampus.community_feed.admin.message.repository;
+
+import org.fastcampus.community_feed.admin.message.application.interfaces.MessageRepository;
+
+public class FcmMessageRepositoryImpl implements MessageRepository {
+
+}
